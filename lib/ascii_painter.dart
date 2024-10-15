@@ -5,9 +5,10 @@ class ASCIIPainter extends CustomPainter {
   final Uint8List imageData;
   final int imageWidth;
   final int imageHeight;
-  final List<String> asciiChars = [' ', '.', ':', '-', '=', '+', '*', '#', '%', '@'];
+  final List<String> asciiChars;
 
-  ASCIIPainter(this.imageData, this.imageWidth, this.imageHeight);
+  ASCIIPainter(
+      this.imageData, this.imageWidth, this.imageHeight, this.asciiChars);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -38,8 +39,10 @@ class ASCIIPainter extends CustomPainter {
     return asciiChars[asciiIndex];
   }
 
-  void _drawAsciiChar(Canvas canvas, int x, int y, Size cellSize, String asciiChar, Paint paint) {
-    final rect = Rect.fromLTWH(x * cellSize.width, y * cellSize.height, cellSize.width, cellSize.height);
+  void _drawAsciiChar(Canvas canvas, int x, int y, Size cellSize,
+      String asciiChar, Paint paint) {
+    final rect = Rect.fromLTWH(x * cellSize.width, y * cellSize.height,
+        cellSize.width, cellSize.height);
     canvas.drawRect(rect, paint);
 
     TextPainter(

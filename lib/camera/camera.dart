@@ -1,11 +1,12 @@
-import 'package:ascii_camera/camera/camera_state.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'camera_state.dart';
 
 class CameraApp extends StatefulWidget {
   final CameraDescription camera;
+  final List<String> asciiChars;
 
-  const CameraApp({super.key, required this.camera});
+  const CameraApp({super.key, required this.camera, required this.asciiChars});
 
   @override
   CameraAppState createState() => CameraAppState();
