@@ -17,8 +17,8 @@ class ASCIIPainter extends CustomPainter {
       ..color = Colors.black
       ..style = PaintingStyle.fill;
 
-    for (int y = 0; y < 60; y++) {
-      for (int x = 0; x < 80; x++) {
+    for (int y = 0; y < 120; y++) {
+      for (int x = 0; x < 160; x++) {
         final asciiChar = _getAsciiChar(x, y);
         _drawAsciiChar(canvas, x, y, cellSize, asciiChar, paint);
       }
@@ -26,12 +26,12 @@ class ASCIIPainter extends CustomPainter {
   }
 
   Size _calculateCellSize(Size size) {
-    return Size(size.width / 80, size.height / 60);
+    return Size(size.width / 160, size.height / 120);
   }
 
   String _getAsciiChar(int x, int y) {
-    final pixelX = (x / 80 * imageWidth).floor();
-    final pixelY = (y / 60 * imageHeight).floor();
+    final pixelX = (x / 160 * imageWidth).floor();
+    final pixelY = (y / 120 * imageHeight).floor();
 
     final pixel = _getPixel(pixelX, pixelY);
     final brightness = _calculateBrightness(pixel);
