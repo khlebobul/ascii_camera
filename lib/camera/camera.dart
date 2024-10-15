@@ -10,3 +10,30 @@ class CameraApp extends StatefulWidget {
   @override
   CameraAppState createState() => CameraAppState();
 }
+
+class CameraView extends StatelessWidget {
+  final Widget cameraPreview;
+
+  const CameraView({super.key, required this.cameraPreview});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            height: 100,
+            color: Colors.black,
+          ),
+          Expanded(
+            child: cameraPreview,
+          ),
+          Container(
+            height: 100,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+}

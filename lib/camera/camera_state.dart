@@ -43,8 +43,8 @@ class CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildBody(),
+    return CameraView(
+      cameraPreview: _buildBody(),
     );
   }
 
