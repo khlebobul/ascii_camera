@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:camera/camera.dart';
 import 'camera_state.dart';
 
@@ -20,21 +21,23 @@ class CameraView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 100,
-            color: Colors.black,
-          ),
-          Expanded(
-            child: cameraPreview,
-          ),
-          Container(
-            height: 100,
-            color: Colors.black,
-          ),
-        ],
-      ),
+      body: kIsWeb
+          ? cameraPreview
+          : Column(
+              children: [
+                Container(
+                  height: 100,
+                  color: Colors.black,
+                ),
+                Expanded(
+                  child: cameraPreview,
+                ),
+                Container(
+                  height: 100,
+                  color: Colors.black,
+                ),
+              ],
+            ),
     );
   }
 }

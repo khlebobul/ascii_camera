@@ -12,6 +12,10 @@ class ASCIIPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (imageWidth == 0 || imageHeight == 0) {
+      return;
+    }
+
     final cellSize = _calculateCellSize(size);
     final paint = Paint()
       ..color = Colors.black
@@ -61,7 +65,10 @@ class ASCIIPainter extends CustomPainter {
   }
 
   Color _getPixel(int x, int y) {
-    final index = (y * imageWidth + x) * 4;
+    int index = (y * imageWidth + x) * 4;
+    if (index + 2 >= imageData.length) {
+      return Colors.black;
+    }
     return Color.fromARGB(
       255,
       imageData[index],
