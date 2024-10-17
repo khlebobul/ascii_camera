@@ -1,14 +1,17 @@
 import 'dart:typed_data';
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ASCIIPainter extends CustomPainter {
   final Uint8List imageData;
   final int imageWidth;
   final int imageHeight;
   final List<String> asciiChars;
+  final Map<String, Map<String, double>> scaleParams;
 
-  ASCIIPainter(
-      this.imageData, this.imageWidth, this.imageHeight, this.asciiChars);
+  ASCIIPainter(this.imageData, this.imageWidth, this.imageHeight,
+      this.asciiChars, this.scaleParams);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -34,8 +37,24 @@ class ASCIIPainter extends CustomPainter {
   }
 
   String _getAsciiChar(int x, int y) {
-    final pixelX = (x / 160 * imageWidth).floor();
-    final pixelY = (y / 120 * imageHeight).floor();
+    double scaleX, scaleY;
+
+    if (kIsWeb) {
+      scaleX = scaleParams['web']?['scaleX'] ?? 160;
+      scaleY = scaleParams['web']?['scaleY'] ?? 120;
+    } else if (Platform.isIOS) {
+      scaleX = scaleParams['ios']?['scaleX'] ?? 160;
+      scaleY = scaleParams['ios']?['scaleY'] ?? 120;
+    } else if (Platform.isAndroid) {
+      scaleX = scaleParams['android']?['scaleX'] ?? 750;
+      scaleY = scaleParams['android']?['scaleY'] ?? 550;
+    } else {
+      scaleX = 160;
+      scaleY = 120;
+    }
+
+    final pixelX = (x / scaleX * imageWidth).floor();
+    final pixelY = (y / scaleY * imageHeight).floor();
 
     final pixel = _getPixel(pixelX, pixelY);
     final brightness = _calculateBrightness(pixel);

@@ -57,7 +57,12 @@ class CameraAppState extends State<CameraApp> with WidgetsBindingObserver {
         if (_lastImageData != null)
           CustomPaint(
             painter: ASCIIPainter(
-                _lastImageData!, _imageWidth, _imageHeight, widget.asciiChars),
+              _lastImageData!, 
+              _imageWidth, 
+              _imageHeight, 
+              widget.asciiChars,
+              widget.scaleParams,
+            ),
             size: Size.infinite,
           ),
       ],

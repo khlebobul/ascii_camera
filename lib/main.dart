@@ -10,10 +10,20 @@ void main() async {
   //const String asciiString = "░▒▓█▓▒░";
   final List<String> asciiChars = asciiString.split('');
 
+  const Map<String, Map<String, double>> scaleParams = {
+    'web': {'scaleX': 160, 'scaleY': 120},
+    'ios': {'scaleX': 160, 'scaleY': 120},
+    'android': {'scaleX': 750, 'scaleY': 550},
+  };
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CameraApp(camera: cameras.first, asciiChars: asciiChars),
+      home: CameraApp(
+        camera: cameras.first,
+        asciiChars: asciiChars,
+        scaleParams: scaleParams,
+      ),
     ),
   );
 }
