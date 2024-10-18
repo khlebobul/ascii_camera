@@ -2,7 +2,8 @@
 
 Flutter application, to create ASCII effect
 
-// Add image
+<img width="700" alt="SCR-20241017-odol" src="https://github.com/user-attachments/assets/09a1fbe0-4725-44e9-b712-4bfc56dff14f">
+
 
 ### About this project
 
@@ -10,7 +11,7 @@ I am passionate about generative art and enjoy creating unusual projects with p5
 
 ### Demo
 
-// Add demo gif
+
 
 ### Table of Contents
 
@@ -24,7 +25,7 @@ I am passionate about generative art and enjoy creating unusual projects with p5
 
 To implement this project I used the [camera](https://pub.dev/packages/camera) package and ASCII characters. The project works as follows ⬇️
 
-// TODO add image
+<img width="700" alt="1_nB7Cx6VyqYLZlbAr9B79NQ" src="https://github.com/user-attachments/assets/258ff6bf-231c-45f4-af7a-bbb25ebd0d60">
 
 * **ASCII Drawing:** the `ASCIIPainter` class is responsible for converting an image into ASCII art.
 * **Cell Partitioning:** the image is divided into a grid of n x m cells.
