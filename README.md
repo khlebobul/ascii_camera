@@ -2,8 +2,9 @@
 
 Flutter application, to create ASCII effect
 
-<img width="700" alt="SCR-20241017-odol" src="https://github.com/user-attachments/assets/09a1fbe0-4725-44e9-b712-4bfc56dff14f">
-
+<div align="center">
+  <img width="700" alt="SCR-20241017-odol" src="https://github.com/user-attachments/assets/09a1fbe0-4725-44e9-b712-4bfc56dff14f">
+</div>
 
 ### About this project
 
@@ -11,7 +12,9 @@ I am passionate about generative art and enjoy creating unusual projects with p5
 
 ### Demo
 
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/51e08b36-f61e-4075-bdf3-18c658b79856" alt="demo" width="400">
+</div>
 
 ### Table of Contents
 
@@ -25,7 +28,9 @@ I am passionate about generative art and enjoy creating unusual projects with p5
 
 To implement this project I used the [camera](https://pub.dev/packages/camera) package and ASCII characters. The project works as follows ⬇️
 
-<img width="700" alt="1_nB7Cx6VyqYLZlbAr9B79NQ" src="https://github.com/user-attachments/assets/258ff6bf-231c-45f4-af7a-bbb25ebd0d60">
+<div align="center">
+  <img width="700" alt="1_nB7Cx6VyqYLZlbAr9B79NQ" src="https://github.com/user-attachments/assets/258ff6bf-231c-45f4-af7a-bbb25ebd0d60">
+</div>
 
 * **ASCII Drawing:** the `ASCIIPainter` class is responsible for converting an image into ASCII art.
 * **Cell Partitioning:** the image is divided into a grid of n x m cells.
@@ -36,9 +41,13 @@ To implement this project I used the [camera](https://pub.dev/packages/camera) p
 * **Drawing of characters:** for each cell, the corresponding ASCII character is drawn.
 * **Image Refresh:** the process is repeated for each new frame from the camera, creating a live ASCII video effect.
 
-#### Read more about this project [Medium link]
+#### Read more about this project ➡️ [Medium link](https://medium.com/@khlebobul/ascii-camera-effect-with-flutter-5433029f4387)
 
-// TODO add example image
+<div align="center">
+  <img width="700" alt="example" src="https://github.com/user-attachments/assets/5413ea2e-e2e0-4510-9980-770930b73a89">
+</div>
+
+[Here's an example of a peacock zoomed in at two levels to show the ASCII characters](https://medium.com/r/?url=https%3A%2F%2Fianparberry.com%2Fart%2Fascii%2Fcolor%2F)
 
 **The brightness of a pixel is calculated using the formula:** `0.299_R + 0.587_G + 0.114B`
 
