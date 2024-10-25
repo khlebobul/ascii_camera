@@ -90,16 +90,6 @@ By the way, you can also try other symbols like ⬇️
 
 `const String asciiString = "░▒▓█▓▒░";`
 
-### TODO
-
-- [ ] Fix android
-- [ ] Add this method to the camera_filters package  `¯\_(ツ)_/¯`
-- [ ] Add a camera flip
-- [ ] Add functionality to take a photo
-- [ ] Add functionality to take a video
-- [ ] Add color ASCII effect
-
-
 ### Contributions
 
 If you'd like to improve the project, I'd be only too happy `ʘ‿ʘ`
