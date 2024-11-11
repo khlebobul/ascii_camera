@@ -1,9 +1,13 @@
 # ascii_camera
 
-Flutter application, to create ASCII effect
-
 <div align="center">
+
+  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/bb9197972e3d47a3a2ff5c207ede94ac)](https://app.codacy.com/gh/khlebobul/ascii_camera/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+  <p>Flutter application, to create ASCII effect</p>
+
   <img width="700" alt="SCR-20241017-odol" src="https://github.com/user-attachments/assets/09a1fbe0-4725-44e9-b712-4bfc56dff14f">
+
 </div>
 
 ### About this project
