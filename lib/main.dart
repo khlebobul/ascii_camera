@@ -23,7 +23,7 @@ void main() async {
         camera: cameras.first,
         asciiChars: asciiChars,
         scaleParams: scaleParams,
-        isColorMode: false,
+        isColorMode: true, // color ASCII mode
       ),
     ),
   );
