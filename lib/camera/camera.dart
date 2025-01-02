@@ -7,12 +7,14 @@ class CameraApp extends StatefulWidget {
   final CameraDescription camera;
   final List<String> asciiChars;
   final Map<String, Map<String, double>> scaleParams;
+  final bool isColorMode;
 
   const CameraApp({
     super.key, 
     required this.camera, 
     required this.asciiChars,
     required this.scaleParams,
+    required this.isColorMode,
   });
 
   @override

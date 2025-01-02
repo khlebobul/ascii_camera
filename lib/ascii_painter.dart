@@ -9,9 +9,16 @@ class ASCIIPainter extends CustomPainter {
   final int imageHeight;
   final List<String> asciiChars;
   final Map<String, Map<String, double>> scaleParams;
+  final bool isColorMode;
 
-  ASCIIPainter(this.imageData, this.imageWidth, this.imageHeight,
-      this.asciiChars, this.scaleParams);
+  ASCIIPainter(
+    this.imageData,
+    this.imageWidth,
+    this.imageHeight,
+    this.asciiChars,
+    this.scaleParams, {
+    required this.isColorMode,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -26,8 +33,19 @@ class ASCIIPainter extends CustomPainter {
 
     for (int y = 0; y < 120; y++) {
       for (int x = 0; x < 160; x++) {
-        final asciiChar = _getAsciiChar(x, y);
-        _drawAsciiChar(canvas, x, y, cellSize, asciiChar, paint);
+        final pixelData = _getPixelData(x, y);
+        if (isColorMode) {
+          _drawColorAsciiChar(
+            canvas,
+            x,
+            y,
+            cellSize,
+            pixelData.char,
+            pixelData.color,
+          );
+        } else {
+          _drawAsciiChar(canvas, x, y, cellSize, pixelData.char, paint);
+        }
       }
     }
   }
@@ -36,7 +54,7 @@ class ASCIIPainter extends CustomPainter {
     return Size(size.width / 160, size.height / 120);
   }
 
-  String _getAsciiChar(int x, int y) {
+  ({String char, Color color}) _getPixelData(int x, int y) {
     double scaleX, scaleY;
 
     if (kIsWeb) {
@@ -55,11 +73,37 @@ class ASCIIPainter extends CustomPainter {
 
     final pixelX = (x / scaleX * imageWidth).floor();
     final pixelY = (y / scaleY * imageHeight).floor();
-
     final pixel = _getPixel(pixelX, pixelY);
     final brightness = _calculateBrightness(pixel);
     final asciiIndex = (brightness * (asciiChars.length - 1)).round();
-    return asciiChars[asciiIndex];
+
+    return (char: asciiChars[asciiIndex], color: pixel);
+  }
+
+  void _drawColorAsciiChar(Canvas canvas, int x, int y, Size cellSize,
+      String asciiChar, Color pixelColor) {
+    final rect = Rect.fromLTWH(x * cellSize.width, y * cellSize.height,
+        cellSize.width, cellSize.height);
+
+    // Optional: Add a background color
+    final bgPaint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.fill;
+    canvas.drawRect(rect, bgPaint);
+
+    // Draw the colored ASCII character
+    TextPainter(
+      text: TextSpan(
+        text: asciiChar,
+        style: TextStyle(
+          color: pixelColor,
+          fontSize: cellSize.height,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )
+      ..layout(minWidth: 0, maxWidth: cellSize.width)
+      ..paint(canvas, Offset(x * cellSize.width, y * cellSize.height));
   }
 
   void _drawAsciiChar(Canvas canvas, int x, int y, Size cellSize,

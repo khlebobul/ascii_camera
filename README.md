@@ -84,6 +84,7 @@ void main() {
       home: CameraApp(
         asciiChars: asciiChars,
         scaleParams: scaleParams,
+        isColorMode: true, // color ASCII mode
       ),
     ),
   );
